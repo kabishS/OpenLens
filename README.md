@@ -6,7 +6,7 @@
 
 ## 🌐 Live Demo
 
-🚀 **OpenLens:** [YOUR_RENDER_LINK](https://openlens-jre0.onrender.com/)
+🚀 **OpenLens:** [https://openlens-jre0.onrender.com/](https://openlens-jre0.onrender.com/)
 
 ---
 
