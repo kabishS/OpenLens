@@ -2,13 +2,11 @@
 
 > A public-interest knowledge platform for discovering academic research, patents, news, jobs, education resources, and civic information — powered by SerpApi.
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-2563EB?style=for-the-badge)](https://openlens-jre0.onrender.com/)
-
 ---
 
 ## 🌐 Live Demo
 
-🚀 **OpenLens:** [YOUR_RENDER_LINK](YOUR_RENDER_LINK)
+🚀 **OpenLens:** [YOUR_RENDER_LINK](https://openlens-jre0.onrender.com/)
 
 ---
 
