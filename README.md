@@ -2,9 +2,7 @@
 
 > A public-interest knowledge platform for discovering academic research, patents, news, jobs, education resources, and civic information — powered by SerpApi.
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-2563EB?style=for-the-badge)](YOUR_RENDER_LINK)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-111827?style=for-the-badge&logo=github)](https://github.com/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](#-license)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-2563EB?style=for-the-badge)](https://openlens-jre0.onrender.com/)
 
 ---
 
