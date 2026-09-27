@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenLens | Public Knowledge & Intelligence Hub</title>
+  <meta name="description" content="OpenLens - Public Interest Intelligence platform for education, academic research, patents, news literacy, civic jobs, and accessibility resources." />
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <!-- Chart.js for Visual Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- Accessible Navigation & Branding Header -->
+  <header role="banner">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">🔍</div>
+        <div class="brand-text">
+          <h1>OpenLens Intelligence Hub</h1>
+          <p>Public Interest & Open Knowledge Discovery</p>
+        </div>
+      </div>
+
+      <!-- Accessibility (A11y) Toolbar -->
+      <div class="a11y-bar" role="toolbar" aria-label="Accessibility controls">
+        <span class="a11y-label">ACCESSIBILITY:</span>
+        <button id="fontDecrease" class="a11y-btn" title="Decrease font size" aria-label="Decrease text size">A-</button>
+        <button id="fontReset" class="a11y-btn" title="Reset font size" aria-label="Reset text size">A</button>
+        <button id="fontIncrease" class="a11y-btn" title="Increase font size" aria-label="Increase text size">A+</button>
+        <button id="contrastToggle" class="a11y-btn" title="Toggle high contrast mode" aria-label="Toggle High Contrast Mode">👁️ High Contrast</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main role="main">
+
+    <!-- Search & Public Interest Tool Selector -->
+    <section class="search-panel" aria-labelledby="searchHeading">
+      <h2 id="searchHeading" class="sr-only" style="display:none;">Search Public Intelligence Database</h2>
+      
+      <!-- Public Interest Tool Tabs -->
+      <div class="tool-tabs" role="tablist" aria-label="Public Interest Tools">
+        <button class="tab-btn active" data-tab="scholar" role="tab" aria-selected="true">
+          🎓 Academic Research
+        </button>
+        <button class="tab-btn" data-tab="patents" role="tab" aria-selected="false">
+          🔬 Patent Explorer
+        </button>
+        <button class="tab-btn" data-tab="news" role="tab" aria-selected="false">
+          📰 News Literacy & Fact-Check
+        </button>
+        <button class="tab-btn" data-tab="jobs" role="tab" aria-selected="false">
+          💼 Civic & Public Jobs
+        </button>
+        <button class="tab-btn" data-tab="education" role="tab" aria-selected="false">
+          📚 Open Education & Courses
+        </button>
+        <button class="tab-btn" data-tab="civic" role="tab" aria-selected="false">
+          🏛️ Civic Services
+        </button>
+      </div>
+
+      <!-- Search Input Row -->
+      <div class="search-box-row">
+        <div class="search-input-wrapper">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input 
+            type="text" 
+            id="searchInput" 
+            class="search-input" 
+            placeholder="Search public interest databases, research papers, patents..." 
+            aria-label="Search term input"
+          />
+        </div>
+
+        <select id="filterSelect" class="filter-select" aria-label="Filter results">
+          <option value="">All Years</option>
+        </select>
+
+        <button id="searchBtn" class="btn-search">
+          <span>Search Engine</span> ➔
+        </button>
+      </div>
+
+      <!-- Quick Topic Chips -->
+      <div class="quick-chips">
+        <span class="quick-chips-title">High-Value Topics:</span>
+        <div id="quickChipsContainer" style="display:inline-flex; gap:0.4rem; flex-wrap:wrap;"></div>
+      </div>
+    </section>
+
+    <!-- Main Results & Analytics Section -->
+    <div class="results-wrapper">
+      
+      <!-- Left Column: Search Results Stream -->
+      <section aria-labelledby="resultsTitle">
+        <div class="results-header">
+          <h2 id="resultsTitle" class="results-title">🎓 Academic Research &amp; Literature</h2>
+          <span id="resultsCount" class="results-count">0 records</span>
+        </div>
+
+        <div id="resultsContainer">
+          <!-- Dynamic Result Cards Injected by JavaScript -->
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Initializing public knowledge engine...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Visual Analytics & Research Workspace -->
+      <aside class="sidebar" role="complementary" aria-label="Analytics and Saved Items">
+        
+        <!-- Interactive Analytics Chart Card -->
+        <div class="sidebar-card">
+          <h3 class="sidebar-title">
+            <span>📊 Intelligence Analytics</span>
+          </h3>
+          <div class="chart-container">
+            <canvas id="analyticsChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Saved Research Workspace Card -->
+        <div class="sidebar-card">
+          <h3 class="sidebar-title">
+            <span>⭐ Research Workspace</span>
+            <span id="bookmarkCountBadge" class="results-count">0</span>
+          </h3>
+          <ul id="workspaceList" class="workspace-list">
+            <li class="workspace-item" style="justify-content:center; color:var(--text-muted);">
+              Workspace is empty. Click 'Save' on items.
+            </li>
+          </ul>
+
+          <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <button id="exportJsonBtn" class="action-btn" style="flex:1;">📥 Export JSON</button>
+            <button id="exportCsvBtn" class="action-btn" style="flex:1;">📊 Export CSV</button>
+            <button id="exportBibtexBtn" class="action-btn" style="width:100%; margin-top:0.2rem;">📑 Export BibTeX</button>
+            <button id="clearWorkspaceBtn" class="action-btn" style="width:100%; color:#ef4444; border-color:#fee2e2;">🗑️ Clear Workspace</button>
+          </div>
+        </div>
+
+        <!-- Accessibility & Shortcut Guide Card -->
+        <div class="sidebar-card">
+          <h3 class="sidebar-title">⌨️ Accessibility Shortcuts</h3>
+          <ul style="font-size:0.85rem; line-height:1.7; padding-left:1.2rem; color:var(--text-muted);">
+            <li><kbd>Alt + S</kbd>: Jump to search input</li>
+            <li><kbd>Alt + C</kbd>: Toggle High Contrast mode</li>
+            <li><strong>Text-to-Speech</strong>: Listen to paper abstracts & news</li>
+            <li><strong>Plain-English</strong>: Simplify complex patent/scholar jargon</li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Plain-Language AI Summarizer Modal -->
+  <div id="modalOverlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle" class="modal-title">💡 Plain-Language Summary</h3>
+        <button id="closeModalBtn" class="btn-close-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div id="modalBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Text-to-Speech (TTS) Narration Bar -->
+  <div id="ttsBar" class="tts-bar" style="display:none;" role="region" aria-label="Audio Speech Player">
+    <div class="tts-info">
+      <div class="tts-pulse"></div>
+      <div>
+        <strong>🔊 Reading Aloud:</strong>
+        <span id="ttsText" style="opacity:0.9;">Reading abstract...</span>
+      </div>
+    </div>
+    <button id="stopTtsBtn" class="action-btn" style="background:#ef4444; color:white; border:none;">⏹️ Stop Narration</button>
+  </div>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p>OpenLens Public Knowledge &amp; Intelligence Hub • Powered by Node.js &amp; SerpAPI</p>
+    <p style="margin-top:0.4rem; opacity:0.75;">Empowering education, scientific research, patent innovation, media literacy, civic jobs, and accessibility.</p>
+  </footer>
+
+  <!-- Application Logic -->
+  <script src="/js/app.js"></script>
+</body>
+</html>
