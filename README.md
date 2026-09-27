@@ -4,19 +4,6 @@
 
 ---
 
-## 📋 Table of Contents
-- [Overview](#overview)
-- [How It Works](#how-it-works)
-- [Architecture & Data Flow](#architecture--data-flow)
-- [Core Modules](#core-modules)
-- [Accessibility Features (A11y)](#accessibility-features-a11y)
-- [API Reference](#api-reference)
-- [Getting Started](#getting-started)
-- [Export & Workspace Utilities](#export--workspace-utilities)
-- [License](#license)
-
----
-
 ## 🌟 Overview
 
 **OpenLens** addresses high-value public needs by democratizing access to academic research, patent filings, verified news reporting, open educational materials, and public sector employment opportunities.
